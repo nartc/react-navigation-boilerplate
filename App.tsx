@@ -10,6 +10,7 @@
 
 import {NavigationNativeContainer} from '@react-navigation/native';
 import React from 'react';
+import {SafeAreaView} from 'react-native';
 import {enableScreens} from 'react-native-screens';
 import RootNavigator from './src/navigators/RootNavigator';
 
@@ -18,7 +19,9 @@ enableScreens();
 const App = () => {
   return (
     <NavigationNativeContainer>
-      <RootNavigator />
+      <SafeAreaView style={{flex: 1}}>
+        <RootNavigator />
+      </SafeAreaView>
     </NavigationNativeContainer>
   );
 };

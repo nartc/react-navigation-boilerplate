@@ -1,15 +1,33 @@
-import {createStackNavigator} from '@react-navigation/stack';
-import React, {useRef} from 'react';
-import HomeScreen from '../screens/Home/HomeScreen';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import React, { useRef } from 'react';
+import Animated from 'react-native-reanimated';
+import ArticleScreen from '../screens/Article/ArticleScreen';
+import FeedScreen from '../screens/Feed/FeedScreen';
 
-const RootNavigator = (props: any) => {
-  console.log('root', props);
-  const Stack = useRef(createStackNavigator());
+const {Value} = Animated;
+
+export type TabParamsList = {
+  Feed: {scrollY: Animated.Value<number>};
+  Article: {scrollY: Animated.Value<number>};
+};
+
+const RootNavigator = () => {
+  const Tab = useRef(createMaterialTopTabNavigator());
+  const scrollY = useRef(new Value(0));
 
   return (
-    <Stack.current.Navigator initialRouteName={'Home'}>
-      <Stack.current.Screen name="Home" component={HomeScreen} />
-    </Stack.current.Navigator>
+    <Tab.current.Navigator>
+      <Tab.current.Screen
+        name={'Feed'}
+        initialParams={{scrollY: scrollY.current}}
+        component={FeedScreen as any}
+      />
+      <Tab.current.Screen
+        name={'Article'}
+        initialParams={{scrollY: scrollY.current}}
+        component={ArticleScreen as any}
+      />
+    </Tab.current.Navigator>
   );
 };
 
