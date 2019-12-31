@@ -10,13 +10,13 @@ const FeedScreen: NavigationScreen<'top-tab', {}, TabParamsList, 'Feed'> = ({
                                                                               route,
                                                                             }) => {
   const animatedScrollViewRef = useRef<{ scrollTo: any }>(null);
-  const scrollYRef = useRef(0);
-  Animated.useCode(() => Animated.call([route.params.scrollY], ([val]) => {
-    scrollYRef.current = val;
-  }), []);
+  // const scrollYRef = useRef(0);
+  // Animated.useCode(() => Animated.call([route.params.scrollY], ([val]) => {
+  //   scrollYRef.current = val;
+  // }), []);
 
   useFocusEffect(() => {
-    animatedScrollViewRef?.current?.scrollTo(scrollYRef.current);
+    animatedScrollViewRef?.current?.scrollTo(200);
   });
 
   return (

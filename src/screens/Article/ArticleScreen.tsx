@@ -17,7 +17,6 @@ const ArticleScreen: NavigationScreen<'stack',
   }), []);
 
   useFocusEffect(() => {
-    console.log(scrollYRef.current);
     animatedScrollViewRef?.current?.scrollTo(scrollYRef.current);
   });
 
@@ -25,7 +24,7 @@ const ArticleScreen: NavigationScreen<'stack',
     <AnimatedScrollView
       ref={ animatedScrollViewRef }
       scrollY={ route.params.scrollY }>
-      { Array.from({ length: 100 }).map((_, index) => {
+      { Array.from({ length: 10 }).map((_, index) => {
         return <Text key={ index }>Article</Text>;
       }) }
     </AnimatedScrollView>
